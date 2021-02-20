@@ -7,18 +7,18 @@ public class BinarySearcher {
 		//Ensures valid interval.
 		if(end>=start) 
 		{
-			int center = start+(end-1)/2;
+			int center = start+(end-start)/2;
 			
 			//Element found.
 			if(array.get(center)==search)
 				return center;
 			
 			//Element right of center
-			if(array.get(center) < search)
-				return binarySearch(array,center+1,end,search);
+			if(array.get(center) > search)
+				return binarySearch(array,start,center-1,search);
 			//Element left of center
 			else
-				return binarySearch(array,start,center-1,search);
+				return binarySearch(array,center+1,end,search);
 		}
 		
 		return -1; //element not found
